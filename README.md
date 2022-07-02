@@ -56,7 +56,7 @@ Nous aurons besoin de quelques dépendances :
 - express (pour faire fonctionner notre serveur !)
 
 ```
-npm i apollo-express-server pg dotenv express
+npm i apollo-server-express pg dotenv express
 ```
 
 Ci-dessous vous trouverez la structure de nos fichiers :
