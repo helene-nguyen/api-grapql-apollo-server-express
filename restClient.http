@@ -1,0 +1,89 @@
+@entrypoint = http://localhost:4100/graphql
+
+###
+POST {{entrypoint}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetAllPersons {
+    getAllPersons{
+        firstname
+        lastname
+        birthdate
+    }
+}
+
+###
+POST {{entrypoint}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetPersonByName($name: String!) {
+    getPersonByName(firstname: $name){
+        firstname
+        birthdate
+    }
+}
+
+{"name": "Adam"}
+
+###
+POST {{entrypoint}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetPersonByDate($date: Date!) {
+    getPersonByDate(date: $date){
+        firstname
+    }
+}
+
+{"date": "1997-01-09"}
+
+
+### CREATE
+POST {{entrypoint}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation Mutation($lastname: String, $firstname: String) {
+  createPerson(lastname: $lastname, firstname: $firstname) {
+    lastname
+    firstname
+  }
+}
+
+{
+    "lastname":"Autre",
+    "firstname":"Autre test"
+}
+
+### DELETE
+POST {{entrypoint}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation Mutation($birthdate: Date!) {
+  deleteByDate(birthdate: $birthdate)
+}
+
+{
+  "birthdate": "1997-01-09"
+}
+
+### UPDATE
+POST {{entrypoint}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation UpdateByName($oldName: String!, $newName: String!) {
+  updateByName(oldName: $oldName, newName: $newName) {
+    lastname
+    firstname
+  }
+}
+
+{
+  "oldName": "Other name",
+  "newName": "Updated name !"
+}

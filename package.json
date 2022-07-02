@@ -1,0 +1,19 @@
+{ 
+  "type": "module",
+  "name": "data-oqlo",
+  "version": "1.0.0",
+  "description": "Cette API a pour but d'interroger une table qui va contenir",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon --inspect index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^3.9.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "pg": "^8.7.3"
+  }
+}
